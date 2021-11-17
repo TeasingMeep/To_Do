@@ -1,0 +1,291 @@
+
+
+/* Things To Do
+    Weird issue when active is added delete button is moved from center
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400;1,500&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1rem;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightslategray;
+}
+
+body::-webkit-scrollbar {
+    border: none;
+    background-color: none;
+}
+body::-webkit-scrollbar-button {
+    display: none;
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(211, 211, 211, 0.432);
+}
+
+body::-webkit-scrollbar-corner {
+    background-color: inherit;
+
+}
+
+.things-list {
+    background-color: lightslategray;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+
+
+
+/* Helpers */
+.add-task.active input {
+    width: 18em;
+}
+
+.add-task.active .btn.close {
+    transform: translateX(15em) translateY(4em);
+}
+ 
+.add-task.active .btn.open {
+    transform: translateX(15em);
+}
+
+.add-task.active .btn.open:hover {
+    background-color: rgb(62, 115, 177);
+}
+.add-task.active .btn.open:active {
+    background-color: rgb(86, 154, 233);
+} 
+
+.add-task.active .btn.close:hover {
+    background-color: rgba(224, 111, 24, 0.589);;
+}
+.add-task.active .btn.close:active {
+    background-color: rgb(236, 135, 58);;
+} 
+
+.hide {
+    display: none;
+}
+
+.complete {
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+
+
+/* Header */
+.things-list header {
+    background-color: rgb(121, 59, 165);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas:
+                    'title time'
+                    'date time';
+    height: 250px;
+    color: white;
+    font-family: 'Lora';
+}
+
+header h1,h2{
+    grid-area: title;
+    font-weight: lighter;
+}
+
+h1 {
+    font-size: 6rem;  
+    padding: 1em 0 0  0.2em;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: .5em 0 0 .7em;
+}
+
+#time {
+    display: None;
+}
+
+#date {
+    grid-area: date;
+    padding-left: 11.4em;
+}
+
+
+
+
+
+/* Input Box */
+header i {
+    font-size: 2em;
+}
+
+.add-task {
+    grid-area: title;
+    position: relative;
+    height: 3em;
+    margin: .5em 0 0 11em;
+    z-index: 500;
+}
+
+.add-task input {
+    border-radius: 10px;
+    border: none;
+    outline: 0;
+    padding: .9em;
+    width: 4em;
+    height: 4em; 
+    transition: width 0.3s ease;
+}
+
+.btn {
+    position: absolute;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    height: 4em;
+    width: 4em;    
+    background-color: rgb(86, 154, 233);
+    color: whitesmoke;
+    transition: translateX() 9s ease;
+}
+
+.btn.close {
+    background-color: rgb(240, 132, 45);
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+.btn:active {
+    background-color: violet;
+}
+
+
+
+
+
+
+/* Task List */
+.tasks {
+    background-color: rgb(30, 54, 99);
+    height: 100vh;
+    overflow: scroll;
+}
+
+.tasks::-webkit-scrollbar {
+    border: none;
+}
+.tasks::-webkit-scrollbar-button {
+    display: none;
+}
+.tasks::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(211, 211, 211, 0.432);
+}
+.tasks::-webkit-scrollbar-corner {
+    background-color: inherit;
+
+}
+
+.task {
+    color: white;
+    font-family: 'Poppins';
+    font-size: 1.3rem;
+    text-align: justify;
+    border-bottom: rgb(168, 168, 168) solid 1px;
+    height: 3em;
+    padding: 1em 0 0 1em;
+    cursor: pointer;
+}
+
+.delete {
+    padding: .5em .5em;
+    height: 2em;
+    width: 2em;
+    border-radius: 10%;
+    float: right;
+    margin-right: 4%;
+    margin-top: -2.5%;
+    background-color: rgb(240, 132, 45);
+}
+
+.delete:hover {
+    transform: scale(1.1);
+}
+.delete:active{
+    background-color: rgba(224, 111, 24, 0.589);
+}
+
+
+
+/* Media Queries */
+@media(min-width: 600px) {
+
+    #time {
+        display: block;
+        font-size: 4em;
+        padding-top: 2em;
+        z-index: 1;
+    }
+
+    #date {
+        margin-top: -1.5em;
+    }
+
+    .add-task.active input {
+        width: 25em;
+    }
+    
+    .add-task.active .btn.open {
+        transform: translateX(23em);
+    }
+    .add-task.active .btn.close {
+        transform: translateX(27em)
+    }
+
+    .task {
+        height: 75px;
+        font-size: 1.75rem;
+        padding: 1em 0 0 .5em;
+    }
+}
+
+@media(min-width: 900px) {
+    .things-list {
+        margin: 5% 0;
+        height: 800px;
+        width: 900px;
+        border-radius: 10px;
+        box-shadow: -1px 8px 10px #2b2a2a;
+    }
+
+    .tasks {
+        height: 550px;
+    }
+    .add-task.active input {
+        width: 35em;
+    }
+    
+    .add-task.active .btn.open {
+        transform: translateX(32em);
+    }
+    .add-task.active .btn.close {
+        transform: translateX(36em)
+    }
+}
