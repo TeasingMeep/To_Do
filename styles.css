@@ -95,7 +95,7 @@ body::-webkit-scrollbar-corner {
     grid-template-areas:
                     'title time'
                     'date time';
-    height: 250px;
+    height: 200px;
     color: white;
     font-family: 'Lora';
 }
@@ -276,7 +276,7 @@ header i {
     }
 
     .tasks {
-        height: 550px;
+        height: 600px;
     }
     .add-task.active input {
         width: 35em;
